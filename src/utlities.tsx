@@ -16,8 +16,9 @@ export const countItemsInCart = (cartItems: FoodItem[]) => {
     );
 };
 
-export const addToCart = (item: FoodItem, setCartItems: React.Dispatch<React.SetStateAction<FoodItem[]>>) => {
+export const addToCart = (item: FoodItem, setCartItems: React.Dispatch<React.SetStateAction<FoodItem[]>>, setToggleCart: React.Dispatch<React.SetStateAction<boolean>>) => {
     setCartItems(prev => [...prev, item])
+    setToggleCart(true);
 }
 
 export const removeFromCart = (item: CartQuantity, setCartItems: React.Dispatch<React.SetStateAction<FoodItem[]>>) => {

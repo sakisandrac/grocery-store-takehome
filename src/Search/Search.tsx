@@ -10,7 +10,6 @@ interface SearchProps {
     cartItems: FoodItem[];
     toggleCart: boolean;
     setToggleCart: React.Dispatch<React.SetStateAction<boolean>>;
-
 }
 
 const Search = ({ setCartItems, cartItems, toggleCart, setToggleCart }: SearchProps) => {
@@ -120,7 +119,7 @@ const Search = ({ setCartItems, cartItems, toggleCart, setToggleCart }: SearchPr
                     <div key={index} className="search-results">
                         {item.image && <img src={item.image} alt={item.label} className="search-item-image" />}
                         <p>{item.label}</p>
-                        <AddButton addToCart={addToCart} item={item} setCartItems={setCartItems} />
+                        <AddButton addToCart={addToCart} item={item} setCartItems={setCartItems} setToggleCart={setToggleCart} />
                     </div>
                 ))}
             </div>

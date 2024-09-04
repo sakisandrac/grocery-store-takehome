@@ -19,7 +19,7 @@ const Navigation = ({ setToggleCart }: NavigationProps) => {
 
     return (
         <nav className="nav-main">
-            <img src={logo} alt="harvest hub logo" className="nav-logo" />
+            <Link className="nav-logo" to="/"><img src={logo} alt="harvest hub logo" className="nav-logo" /></Link>
             <div className="nav-left">
                 {currentPath !== '/checkout' && (
                     <div className="nav-cart-container">

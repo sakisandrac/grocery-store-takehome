@@ -42,7 +42,7 @@ const Homepage = ({ toggleCart, cartItems, setCartItems, setToggleCart, data, er
                 <>
                   <img src={item.image} alt={item.label} className="home-item-image" />
                   <p>{item.label}</p>
-                  <AddButton addToCart={addToCart} item={item} setCartItems={setCartItems} />
+                  <AddButton addToCart={addToCart} item={item} setCartItems={setCartItems} setToggleCart={setToggleCart} />
                 </>
               )}
             </div>
