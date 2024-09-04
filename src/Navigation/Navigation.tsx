@@ -17,13 +17,14 @@ const Navigation = ({ setToggleCart }: NavigationProps) => {
         <nav className="nav-main">
             <img src={logo} alt="harvest hub logo" className="nav-logo" />
             <div className="nav-left">
-                {currentPath === '/' &&
+                {currentPath !== '/checkout' &&
                     (<div className="nav-cart-container">
                         <img onClick={() => setToggleCart(prev => !prev)} className="nav-cart" src={cartIcon} alt="cart icon" />
                     </div>)
                 }
                 <ul className="nav-links">
                     <Link className="nav-link" to="/">Home</Link>
+                    <Link className="nav-link" to="/search">Search</Link>
                     <Link className="nav-link" to="/checkout">Checkout</Link>
                 </ul>
 

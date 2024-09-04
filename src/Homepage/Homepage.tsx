@@ -4,6 +4,7 @@ import groceryHero from '../resources/groceries-hero.png'
 import AddButton from '../AddButton/AddButton';
 import Cart from '../Cart/Cart';
 import { FoodItem } from '../types';
+import { addToCart } from '../utlities';
 
 
 
@@ -70,10 +71,6 @@ const Homepage = ({ toggleCart, cartItems, setCartItems }: HomepageProps) => {
   const APP_KEY = process.env.REACT_APP_API_KEY;
   const query = ['generic-foods'];
 
-  const addToCart = (item: FoodItem) => {
-    setCartItems(prev => [...prev, item])
-  }
-
   useEffect(() => {
     // fetch(`https://api.edamam.com/api/food-database/v2/parser?category=${query}&app_id=${APP_ID}&app_key=${APP_KEY}`)
     //   .then(response => response.json())
@@ -108,7 +105,7 @@ const Homepage = ({ toggleCart, cartItems, setCartItems }: HomepageProps) => {
                 <>
                   <img src={item.image} alt={item.label} className="home-item-image" />
                   <p>{item.label}</p>
-                  <AddButton addToCart={addToCart} item={item} />
+                  <AddButton addToCart={addToCart} item={item} setCartItems={setCartItems} />
                 </>
               )}
             </div>

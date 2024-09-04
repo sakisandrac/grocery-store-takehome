@@ -2,12 +2,13 @@ import React from 'react';
 import { FoodItem } from '../types';
 
 interface AddButtonProps {
-    addToCart: (item: FoodItem) => void;
+    addToCart: (item: FoodItem, setCartItems: React.Dispatch<React.SetStateAction<FoodItem[]>>) => void;
     item: FoodItem;
+    setCartItems: React.Dispatch<React.SetStateAction<FoodItem[]>>;
 }
-const AddButton = ({ addToCart, item }: AddButtonProps) => {
+const AddButton = ({ addToCart, item, setCartItems }: AddButtonProps) => {
     return (
-        <button onClick={() => addToCart(item)}>Add to cart</button>
+        <button onClick={() => addToCart(item, setCartItems)}>Add to cart</button>
     )
 }
 

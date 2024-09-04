@@ -15,3 +15,8 @@ export const countItemsInCart = (cartItems: FoodItem[]) => {
         )
     );
 };
+
+
+export const addToCart = (item: FoodItem, setCartItems: React.Dispatch<React.SetStateAction<FoodItem[]>>) => {
+    setCartItems(prev => [...prev, item])
+}
