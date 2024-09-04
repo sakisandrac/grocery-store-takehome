@@ -1,3 +1,11 @@
+ul {
+    list-style-type: none;
+}
+
+p {
+    margin: 16px;
+}
+
 .nav-main {
     height: 60px;
     display: flex;
@@ -7,6 +15,9 @@
 
 .nav-links {
     display: flex;
+    align-items: center;
+    margin: 0 20px 0 20px;
+    padding: 0;
 }
 
 .nav-title {
@@ -26,33 +37,17 @@
     align-items: center;
 }
 
+.nav-cart-container :hover {
+    cursor: pointer;
+}
+
 .nav-cart {
     height: 30px;
     margin: 10px;
 }
 
-ul {
-    list-style-type: none;
-}
-
-li {
-    margin: 5px;
-
-}
-
-a {
+.nav-link {
     color: white;
     text-decoration: none;
-}
-
-a:visited {
-    color: white;
-}
-
-a:hover {
-    color: black;
-}
-
-p {
-    margin: 16px;
+    margin: 0 16px 0 16px;
 }

@@ -1,35 +1,22 @@
 import React, { useEffect } from 'react';
 import './Cart.css';
-import { FoodItem } from '../types';
+import { CartQuantity, FoodItem } from '../types';
+import { useNavigate } from 'react-router-dom';
+import { countItemsInCart } from '../utlities';
 
 interface CartProps {
     cartItems: FoodItem[];
 }
 
-interface CartQuantity {
-    item: FoodItem;
-    quantity: number;
-}
-
 const Cart = ({ cartItems }: CartProps) => {
+    const navigate = useNavigate();
 
-    const countItemsInCart = () => {
-        return Object.values(
-            cartItems.reduce<{ [foodId: string]: { item: FoodItem; quantity: number } }>(
-                (acc, item) => {
-                    if (acc[item.foodId]) {
-                        acc[item.foodId].quantity += 1;
-                    } else {
-                        acc[item.foodId] = { item, quantity: 1 };
-                    }
-                    return acc;
-                },
-                {}
-            )
-        );
+    const goToCheckout = () => {
+        navigate('/checkout');
     };
 
-    const cartSummary = countItemsInCart();
+
+    const cartSummary = countItemsInCart(cartItems);
 
     return (
         <div className="cart-main">
@@ -46,6 +33,7 @@ const Cart = ({ cartItems }: CartProps) => {
                     )}
                 </div>
             ))}
+            {cartItems.length > 0 && <button onClick={goToCheckout} className="cart-checkout-btn">Checkout</button>}
         </div>
     )
 }
