@@ -6,6 +6,7 @@ import { FoodItem, Hint } from '../types';
 import { Route, Routes } from 'react-router-dom';
 import Checkout from '../Checkout/Checkout';
 import Search from '../Search/Search';
+import ErrorPage from '../ErrorPage/ErrorPage';
 
 const mockData = [
   {
@@ -143,6 +144,7 @@ const App = () => {
         <Route path="/" element={<Homepage data={data} error={error} toggleCart={toggleCart} cartItems={cartItems} setCartItems={setCartItems} setToggleCart={setToggleCart} />} />
         <Route path="/checkout" element={<Checkout cartItems={cartItems} setCartItems={setCartItems} />} />
         <Route path="/search" element={<Search setCartItems={setCartItems} cartItems={cartItems} toggleCart={toggleCart} setToggleCart={setToggleCart} />} />
+        <Route path="*" element={<ErrorPage />} />
       </Routes>
     </>
   );
