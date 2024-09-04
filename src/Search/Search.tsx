@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { FoodItem, Hint } from '../types';
 import './Search.css';
 import AddButton from '../AddButton/AddButton';
-import { addToCart } from '../utlities';
+import { addToCart, API_ID, API_KEY } from '../utlities';
 import Cart from '../Cart/Cart';
 import imageUnavailable from '../resources/unavailable.png';
 
@@ -32,8 +32,6 @@ const Search = ({ setCartItems, cartItems, toggleCart, setToggleCart }: SearchPr
             return;
         }
 
-        const API_ID = process.env.REACT_APP_API_ID;
-        const API_KEY = process.env.REACT_APP_API_KEY;
         const API_URL = `https://api.edamam.com/api/food-database/v2/parser?ingr=${query}&app_id=${API_ID}&app_key=${API_KEY}`;
 
         try {
@@ -62,7 +60,7 @@ const Search = ({ setCartItems, cartItems, toggleCart, setToggleCart }: SearchPr
 
     useEffect(() => {
         setToggleCart(false);
-    }, [])
+    }, []);
 
     return (
         <div className="search-main">

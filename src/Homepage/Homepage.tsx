@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react';
 import './Homepage.css';
-import groceryHero from '../resources/groceries-hero.png'
+import groceryHero from '../resources/groceries-hero.png';
 import AddButton from '../AddButton/AddButton';
 import Cart from '../Cart/Cart';
 import { FoodItem } from '../types';
 import { addToCart } from '../utlities';
+import imageUnavailable from '../resources/unavailable.png';
 
 interface HomepageProps {
   toggleCart: boolean;
@@ -18,7 +19,6 @@ interface HomepageProps {
 
 
 const Homepage = ({ toggleCart, cartItems, setCartItems, setToggleCart, data, error }: HomepageProps) => {
-  ;
 
   useEffect(() => {
     setToggleCart(false)
@@ -36,20 +36,14 @@ const Homepage = ({ toggleCart, cartItems, setCartItems, setToggleCart, data, er
       <section>
         <p className="home-shop-text">Shop Popular Items</p>
         <div className="home-items-container">
-          {!error && data?.map((item: FoodItem, index: number) => (
-            <div className="home-item" key={index}>
-              {item.image && (
-                <>
-                  <img src={item.image} alt={item.label} className="home-item-image" />
-                  <p>{item.label}</p>
-                  <AddButton addToCart={addToCart} item={item} setCartItems={setCartItems} setToggleCart={setToggleCart} />
-                </>
-              )}
-            </div>
-          ))}
-          {error && (
-            <p>Network request error, please refresh page!</p>
-          )}
+          {error ? <p>Network request error, please refresh page!</p>
+            : (data?.map((item: FoodItem, index: number) => (
+              <div className="home-item" key={index}>
+                <img src={item.image ?? imageUnavailable} alt={item.label} className="home-item-image" />
+                <p>{item.label}</p>
+                <AddButton addToCart={addToCart} item={item} setCartItems={setCartItems} setToggleCart={setToggleCart} />
+              </div>
+            )))}
         </div>
       </section>
       {toggleCart && <Cart cartItems={cartItems} setCartItems={setCartItems} />}

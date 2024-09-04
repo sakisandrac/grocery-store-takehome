@@ -1,4 +1,7 @@
-import { CartQuantity, FoodItem, Hint } from "./types";
+import { CartQuantity, FoodItem } from "./types";
+
+export const API_ID = process.env.REACT_APP_API_ID;
+export const API_KEY = process.env.REACT_APP_API_KEY;
 
 export const countItemsInCart = (cartItems: FoodItem[]) => {
     return Object.values(
