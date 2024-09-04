@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { FoodItem, Hint } from '../types';
-import './Search.css'
+import './Search.css';
 import AddButton from '../AddButton/AddButton';
 import { addToCart } from '../utlities';
 import Cart from '../Cart/Cart';
+import imageUnavailable from '../resources/unavailable.png';
 
 interface SearchProps {
     setCartItems: React.Dispatch<React.SetStateAction<FoodItem[]>>;
@@ -18,8 +19,18 @@ const Search = ({ setCartItems, cartItems, toggleCart, setToggleCart }: SearchPr
     const [error, setError] = useState('');
     const [searchSubmitted, setSearchSubmitted] = useState<boolean>(false);
 
+    const checkInput = (query: string) => {
+        return query !== '';
+    };
+
     const handleSearch = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
         e.preventDefault();
+
+        if (!checkInput(query)) {
+            setSearchSubmitted(true);
+            setError('Search cannot be blank!')
+            return;
+        }
 
         const API_ID = process.env.REACT_APP_API_ID;
         const API_KEY = process.env.REACT_APP_API_KEY;
@@ -29,6 +40,7 @@ const Search = ({ setCartItems, cartItems, toggleCart, setToggleCart }: SearchPr
             const response = await fetch(API_URL);
 
             if (!response.ok) {
+                setError('Network error');
                 throw new Error('Network error');
             }
 
@@ -42,7 +54,7 @@ const Search = ({ setCartItems, cartItems, toggleCart, setToggleCart }: SearchPr
             }));
             setResults(shapedData);
             setError('');
-            setSearchSubmitted(true)
+            setSearchSubmitted(true);
         } catch (err) {
             setError('Failed to fetch data. Please try again.');
         }
@@ -65,12 +77,11 @@ const Search = ({ setCartItems, cartItems, toggleCart, setToggleCart }: SearchPr
                 />
                 <button type="submit">Search</button>
             </form>
-            {error && <p>{error}</p>}
-            {results.length === 0 && searchSubmitted ? <p>No results found please try another term</p> : <p>Please enter a search term</p>}
+            {results.length === 0 && searchSubmitted ? <p>{error ? error : 'No results found please try another term'}</p> : <p>Please enter a search term</p>}
             <div className="search-results">
                 {results.map((item, index) => (
-                    <div key={index} className="search-results">
-                        {item.image && <img src={item.image} alt={item.label} className="search-item-image" />}
+                    <div key={index} className="search-results-item">
+                        <img src={item.image ?? imageUnavailable} alt={item.label} className="search-item-image" />
                         <p>{item.label}</p>
                         <AddButton addToCart={addToCart} item={item} setCartItems={setCartItems} setToggleCart={setToggleCart} />
                     </div>
