@@ -18,11 +18,3 @@
 .cart-item-image {
     height: 50%;
 }
-
-.cart-checkout-btn {
-    background-color: #A7C957;
-    border: none;
-    padding: 10px;
-    border-radius: 16px;
-    width: 100px;
-}

@@ -35,9 +35,6 @@ p {
 .nav-cart-container {
     display: flex;
     align-items: center;
-}
-
-.nav-cart-container :hover {
     cursor: pointer;
 }
 

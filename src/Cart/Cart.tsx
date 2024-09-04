@@ -15,7 +15,6 @@ const Cart = ({ cartItems }: CartProps) => {
         navigate('/checkout');
     };
 
-
     const cartSummary = countItemsInCart(cartItems);
 
     return (
@@ -33,7 +32,7 @@ const Cart = ({ cartItems }: CartProps) => {
                     )}
                 </div>
             ))}
-            {cartItems.length > 0 && <button onClick={goToCheckout} className="cart-checkout-btn">Checkout</button>}
+            {cartItems.length > 0 && <button onClick={goToCheckout}>Checkout</button>}
         </div>
     )
 }

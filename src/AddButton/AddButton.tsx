@@ -1,5 +1,4 @@
 import React from 'react';
-import './AddButton.css';
 import { FoodItem } from '../types';
 
 interface AddButtonProps {
@@ -8,7 +7,7 @@ interface AddButtonProps {
 }
 const AddButton = ({ addToCart, item }: AddButtonProps) => {
     return (
-        <button onClick={() => addToCart(item)} className="add-button">Add to cart</button>
+        <button onClick={() => addToCart(item)}>Add to cart</button>
     )
 }
 
