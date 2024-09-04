@@ -21,7 +21,7 @@ const Cart = ({ cartItems, setCartItems }: CartProps) => {
 
     return (
         <div className="cart-main">
-            <p>Items in your cart:</p>
+            <p className="cart-text">Items in your cart:</p>
             {cartItems.length === 0 && <p>You have not added any items yet</p>}
             {cartSummary?.map((item: CartQuantity, index: number) => (
                 <div className="cart-item" key={index}>

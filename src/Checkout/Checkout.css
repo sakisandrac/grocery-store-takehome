@@ -10,6 +10,10 @@ h1 {
     padding-bottom: 20px;
 }
 
+.checkout-text {
+    font-weight: 600;
+}
+
 .checkout-review {
     display: flex;
     flex-direction: column;
@@ -20,6 +24,19 @@ h1 {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.checkout-items {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.checkout-item {
+    background-color: #f2e8cf93;
+    border-radius: 16px;
+    padding: 10px;
+    margin: 5px;
 }
 
 .checkout-item-image {
@@ -37,4 +54,6 @@ h1 {
     width: 60%;
     overflow-y: scroll;
     margin-bottom: 20px;
+    background-color: #f2e8cf93;
+    border-radius: 16px;
 }
