@@ -1,46 +1,55 @@
-# Getting Started with Create React App
+<div align="center">
+<h1> Harvest Hub 🍎</h1>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Technologies used FRONTEND:<br>
+  <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" />
+  <img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" />
+</div>
 
-## Available Scripts
+## About this Application:
+- Harvest Hub is a mock grocery store that allows users to browse through food items from the [Edamam Food API](https://developer.edamam.com/food-database-api-docs).
+  
+### Application Features:
+- See grocery items upon visiting homepage
+- Navigation bar
+- Search through foods from API
+- Add / Remove items in cart
+- Checkout items after finishing adding to cart
+- Summary of items after purchasing
+- Cart contents reset after purchase
+- Application is responsive to desktop and mobile
 
-In the project directory, you can run:
+## Context:
+- This application was created within a 1 week guideline for a takehome challenge, using React. The goal of this application was to show my knowledege of React and TypeScript. UI design and implementation were completely up to me, as long as it had all the required features.
 
-### `yarn start`
+## Preview of App:
+<div align="center">
+  <h2>Home Page</h2>
+  <div style="display: inline-block;">
+  <img width="290" alt="Screenshot 2023-11-27 at 7 01 26 PM" src="https://github.com/user-attachments/assets/cb6c3a7f-57b7-4dd8-8592-da674f182903" alt="Image 1" style="display: inline-block;">
+</div>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+  <h2>Add item to cart</h2>
+    <div style="display: inline-block;">
+  <img width="290" alt="Screenshot 2023-11-26 at 3 22 10 PM" src="https://github.com/user-attachments/assets/40db1bda-b055-42b5-8ee0-217ce9795836" style="display: inline-block;">
+</div>
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+  <h2>Search for food</h2>
+    <div style="display: inline-block;">
+        <img width="290" alt="Screenshot 2023-11-26 at 3 22 10 PM" src="https://github.com/user-attachments/assets/a4bb18a2-bce7-40b1-b0da-a63c13a8de3c" style="display: inline-block;">
+</div>
 
-### `yarn test`
+  <h2>Purchase successful</h2>
+    <div style="display: inline-block;">
+        <img width="290" alt="Screenshot 2023-11-26 at 3 22 10 PM" src="https://github.com/user-attachments/assets/2760b959-5588-4bd5-ac15-d03fce610c51" style="display: inline-block;">
+    <img width="290" alt="Screenshot 2023-11-27 at 7 01 26 PM" src="https://github.com/user-attachments/assets/8116b7c6-a808-4f8a-97d2-2327616317be" alt="Image 1" style="display: inline-block;">
+</div>
+ </div>
+  </div>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Installation Instructions:
+- Fork [this](https://github.com/sakisandrac/grocery-store-takehome) repository. 
+- Clone it to your local machine using the command: `git clone git@github.com:sakisandrac/grocery-store-takehome.git`.
+- Run the command: `cd grocery-store-takehome`
+- Run the command: `npm install`
+- Run the command: `npm start`
