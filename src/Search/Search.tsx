@@ -13,55 +13,8 @@ interface SearchProps {
 }
 
 const Search = ({ setCartItems, cartItems, toggleCart, setToggleCart }: SearchProps) => {
-
-
-    const mockData = [
-        {
-            category: "Generic foods",
-            categoryLabel: "food",
-            foodId: "food_bwrgmmqau78xrdazxx79obeezumz",
-            image: "https://www.edamam.com/food-img/515/515af390107678fce1533a31ee4cc35b.jpeg",
-            label: "Butter, Salted"
-        },
-        {
-
-            category: "Generic foods",
-            categoryLabel: "food",
-            foodId: "food_bwrgmmqau78xrdazxx79obeezumz",
-            image: "https://www.edamam.com/food-img/515/515af390107678fce1533a31ee4cc35b.jpeg",
-            label: "Butter, Salted"
-
-        },
-        {
-
-            category: "Generic foods",
-            categoryLabel: "food",
-            foodId: "food_bwrgmmqau78xrdazxx79obeezumz",
-            image: "https://www.edamam.com/food-img/515/515af390107678fce1533a31ee4cc35b.jpeg",
-            label: "Butter, Salted"
-
-        },
-        {
-
-            category: "Generic foods",
-            categoryLabel: "food",
-            foodId: "food",
-            image: "https://www.edamam.com/food-img/515/515af390107678fce1533a31ee4cc35b.jpeg",
-            label: "test"
-
-        },
-        {
-
-            category: "Generic foods",
-            categoryLabel: "food",
-            foodId: "food",
-            image: "https://www.edamam.com/food-img/515/515af390107678fce1533a31ee4cc35b.jpeg",
-            label: "test"
-
-        }
-    ]
     const [query, setQuery] = useState('');
-    const [results, setResults] = useState<FoodItem[]>(mockData);
+    const [results, setResults] = useState<FoodItem[]>([]);
     const [error, setError] = useState('');
 
     const handleSearch = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
