@@ -63,7 +63,6 @@ interface HomepageProps {
 
 const Homepage = ({ toggleCart, cartItems, setCartItems }: HomepageProps) => {
   const [data, setData] = useState<FoodItem[] | null>(mockData);
-  const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState(null);
 
 
@@ -87,7 +86,6 @@ const Homepage = ({ toggleCart, cartItems, setCartItems }: HomepageProps) => {
     //   })
     //   .catch(error => {
     //     setError(error);
-    //     setLoading(false);
     //   });
   }, []);
 
@@ -115,7 +113,7 @@ const Homepage = ({ toggleCart, cartItems, setCartItems }: HomepageProps) => {
           )}
         </div>
       </section>
-      {toggleCart && <Cart cartItems={cartItems} />}
+      {toggleCart && <Cart cartItems={cartItems} setCartItems={setCartItems} />}
     </div>
   )
 }

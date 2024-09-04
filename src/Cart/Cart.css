@@ -10,12 +10,26 @@
     flex-direction: column;
     align-items: center;
     overflow-y: scroll;
+    padding-bottom: 20px;
 }
 
 .cart-item {
     height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cart-image-container {
+    display: flex;
+    align-items: center;
 }
 
 .cart-item-image {
     width: 100px;
+}
+
+.cart-close-icon {
+    height: 50px;
+    cursor: pointer;
 }

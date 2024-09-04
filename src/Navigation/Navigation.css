@@ -2,10 +2,6 @@ ul {
     list-style-type: none;
 }
 
-p {
-    margin: 16px;
-}
-
 .nav-main {
     height: 60px;
     display: flex;

@@ -6,3 +6,8 @@ button {
     border-radius: 16px;
     width: 100px;
 }
+
+p {
+    margin: 10px;
+    padding: 0;
+}

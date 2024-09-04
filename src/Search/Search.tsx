@@ -101,11 +101,13 @@ const Search = ({ setCartItems, cartItems, toggleCart }: SearchProps) => {
                     value={query}
                     onChange={(e) => setQuery(e.target.value)}
                     placeholder="Enter food item"
+                    className="search-input"
                 />
                 <button type="submit">Search</button>
             </form>
 
             {error && <p>{error}</p>}
+            {results.length === 0 && <p>No results found, try a different search!</p>}
 
             <div className="search-main">
                 {results.map((item, index) => (
@@ -116,7 +118,7 @@ const Search = ({ setCartItems, cartItems, toggleCart }: SearchProps) => {
                     </div>
                 ))}
             </div>
-            {toggleCart && <Cart cartItems={cartItems} />}
+            {toggleCart && <Cart setCartItems={setCartItems} cartItems={cartItems} />}
         </div>
     );
 }

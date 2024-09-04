@@ -4,3 +4,11 @@
     align-items: center;
     position: relative;
 }
+
+.search-input {
+    height: 20px;
+    border-radius: 16px;
+    border-width: 1px;
+    margin: 5px;
+    padding: 5px;
+}

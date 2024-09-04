@@ -2,13 +2,15 @@ import React, { useEffect } from 'react';
 import './Cart.css';
 import { CartQuantity, FoodItem } from '../types';
 import { useNavigate } from 'react-router-dom';
-import { countItemsInCart } from '../utlities';
+import { countItemsInCart, removeFromCart } from '../utlities';
+import closeIcon from '../resources/close-icon.png';
 
 interface CartProps {
     cartItems: FoodItem[];
+    setCartItems: React.Dispatch<React.SetStateAction<FoodItem[]>>
 }
 
-const Cart = ({ cartItems }: CartProps) => {
+const Cart = ({ cartItems, setCartItems }: CartProps) => {
     const navigate = useNavigate();
 
     const goToCheckout = () => {
@@ -20,12 +22,14 @@ const Cart = ({ cartItems }: CartProps) => {
     return (
         <div className="cart-main">
             <p>Items in your cart:</p>
-            {!cartItems && <p>You have not added any items yet</p>}
+            {cartItems.length === 0 && <p>You have not added any items yet</p>}
             {cartSummary?.map((item: CartQuantity, index: number) => (
                 <div className="cart-item" key={index}>
                     {item.item.image && (
                         <>
-                            <img src={item.item.image} alt={item.item.label} className="cart-item-image" />
+                            <div className='cart-image-container'>
+                                <img onClick={() => removeFromCart(item, setCartItems)} className="cart-close-icon" src={closeIcon} alt="remove items" />
+                                <img src={item.item.image} alt={item.item.label} className="cart-item-image" /></div>
                             <p>{item.item.label}</p>
                             <p>Quantity: {item.quantity}</p>
                         </>
