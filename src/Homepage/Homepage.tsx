@@ -29,8 +29,12 @@ const Homepage = ({ toggleCart, cartItems, setCartItems, setToggleCart, data, er
       <section>
         <img src={groceryHero} alt="banner of food" className="home-hero-image" />
       </section>
+      <section className="home-info-container">
+        <h1 className="home-welcome-text">Welcome to the Harvest Hub</h1>
+        <p>fresh produce from local farms</p>
+      </section>
       <section>
-        <p>Shop Popular Items</p>
+        <p className="home-shop-text">Shop Popular Items</p>
         <div className="home-items-container">
           {!error && data?.map((item: FoodItem, index: number) => (
             <div className="home-item" key={index}>
