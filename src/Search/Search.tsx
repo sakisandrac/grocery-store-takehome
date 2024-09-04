@@ -16,6 +16,7 @@ const Search = ({ setCartItems, cartItems, toggleCart, setToggleCart }: SearchPr
     const [query, setQuery] = useState('');
     const [results, setResults] = useState<FoodItem[]>([]);
     const [error, setError] = useState('');
+    const [searchSubmitted, setSearchSubmitted] = useState<boolean>(false);
 
     const handleSearch = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
         e.preventDefault();
@@ -41,6 +42,7 @@ const Search = ({ setCartItems, cartItems, toggleCart, setToggleCart }: SearchPr
             }));
             setResults(shapedData);
             setError('');
+            setSearchSubmitted(true)
         } catch (err) {
             setError('Failed to fetch data. Please try again.');
         }
@@ -63,10 +65,8 @@ const Search = ({ setCartItems, cartItems, toggleCart, setToggleCart }: SearchPr
                 />
                 <button type="submit">Search</button>
             </form>
-
             {error && <p>{error}</p>}
-            {results.length === 0 && <p>No results found, try a different search!</p>}
-
+            {results.length === 0 && searchSubmitted ? <p>No results found please try another term</p> : <p>Please enter a search term</p>}
             <div className="search-results">
                 {results.map((item, index) => (
                     <div key={index} className="search-results">
