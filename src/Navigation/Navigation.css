@@ -1,0 +1,53 @@
+.nav-main {
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    background-color: #386641;
+}
+
+.nav-links {
+    display: flex;
+}
+
+.nav-title {
+    font-size: x-large;
+}
+
+.nav-logo {
+    margin: 10px;
+}
+
+.nav-cart-container {
+display: flex;
+align-items: center;
+}
+
+.nav-cart {
+     height: 30px;
+}
+
+ul {
+    list-style-type: none;
+}
+
+li {
+    margin: 5px;
+
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+a:visited {
+    color: white;
+}
+
+a:hover {
+    color: black;
+}
+
+p {
+    margin: 16px;
+}
