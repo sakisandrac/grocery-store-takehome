@@ -41,7 +41,50 @@ ul {
 }
 
 .nav-link {
-    color: white;
+    color: #FFFFFF;
     text-decoration: none;
     margin: 0 16px 0 16px;
+}
+
+.nav-menu-container {
+    display: flex;
+    align-items: center;
+}
+
+.nav-hamburger {
+    display: none;
+    font-size: 2rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background-color: #FFFFFF;
+        width: 200px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.7);
+        z-index: 10;
+        margin: 0;
+    }
+
+    .nav-links-open {
+        display: flex;
+        background-color: #386641;
+    }
+
+    .nav-menu-container {
+        width: 50px;
+    }
+
+    .nav-hamburger {
+        display: block;
+        margin: 0 10px 0 0 ;
+        padding: 0;
+    }
 }

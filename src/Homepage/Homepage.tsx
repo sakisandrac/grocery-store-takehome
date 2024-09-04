@@ -31,7 +31,7 @@ const Homepage = ({ toggleCart, cartItems, setCartItems, setToggleCart, data, er
       </section>
       <section className="home-info-container">
         <h1 className="home-welcome-text">Welcome to the Harvest Hub</h1>
-        <p>fresh produce from local farms</p>
+        <p>Fresh produce from local farms</p>
       </section>
       <section>
         <p className="home-shop-text">Shop Popular Items</p>
