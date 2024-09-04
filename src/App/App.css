@@ -1,0 +1,24 @@
+button {
+    cursor: pointer;
+    background-color: #A7C957;
+    border: none;
+    padding: 10px;
+    border-radius: 16px;
+    width: 100px;
+}
+
+button:hover {
+    background-color: #386641;
+    color: #FFFFFF;
+}
+
+p {
+    margin: 10px;
+    padding: 0;
+    font-family: "Open Sans", sans-serif;
+}
+
+h1 {
+    font-family: "Open Sans", sans-serif;
+}
+  
