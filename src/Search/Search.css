@@ -3,6 +3,7 @@
     flex-direction: column;
     align-items: center;
     position: relative;
+    padding-bottom: 20px;
 }
 
 .search-input {
@@ -11,4 +12,15 @@
     border-width: 1px;
     margin: 5px;
     padding: 5px;
+}
+
+.search-results {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.search-item-image {
+    width: 50%;
+    margin-top: 20px;;
 }

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import './Homepage.css';
 import groceryHero from '../resources/groceries-hero.png'
 import AddButton from '../AddButton/AddButton';
@@ -6,88 +6,23 @@ import Cart from '../Cart/Cart';
 import { FoodItem } from '../types';
 import { addToCart } from '../utlities';
 
-
-
-const mockData = [
-  {
-    category: "Generic foods",
-    categoryLabel: "food",
-    foodId: "food_bwrgmmqau78xrdazxx79obeezumz",
-    image: "https://www.edamam.com/food-img/515/515af390107678fce1533a31ee4cc35b.jpeg",
-    label: "Butter, Salted"
-  },
-  {
-
-    category: "Generic foods",
-    categoryLabel: "food",
-    foodId: "food_bwrgmmqau78xrdazxx79obeezumz",
-    image: "https://www.edamam.com/food-img/515/515af390107678fce1533a31ee4cc35b.jpeg",
-    label: "Butter, Salted"
-
-  },
-  {
-
-    category: "Generic foods",
-    categoryLabel: "food",
-    foodId: "food_bwrgmmqau78xrdazxx79obeezumz",
-    image: "https://www.edamam.com/food-img/515/515af390107678fce1533a31ee4cc35b.jpeg",
-    label: "Butter, Salted"
-
-  },
-  {
-
-    category: "Generic foods",
-    categoryLabel: "food",
-    foodId: "food",
-    image: "https://www.edamam.com/food-img/515/515af390107678fce1533a31ee4cc35b.jpeg",
-    label: "test"
-
-  },
-  {
-
-    category: "Generic foods",
-    categoryLabel: "food",
-    foodId: "food",
-    image: "https://www.edamam.com/food-img/515/515af390107678fce1533a31ee4cc35b.jpeg",
-    label: "test"
-
-  }
-]
-
 interface HomepageProps {
   toggleCart: boolean;
   cartItems: FoodItem[];
   setCartItems: React.Dispatch<React.SetStateAction<FoodItem[]>>;
+  setToggleCart: React.Dispatch<React.SetStateAction<boolean>>;
+  data: FoodItem[]
+  error: string;
+
 }
 
 
-const Homepage = ({ toggleCart, cartItems, setCartItems }: HomepageProps) => {
-  const [data, setData] = useState<FoodItem[] | null>(mockData);
-  const [error, setError] = useState(null);
-
-
-  const APP_ID = process.env.REACT_APP_API_ID;
-  const APP_KEY = process.env.REACT_APP_API_KEY;
-  const query = ['generic-foods'];
+const Homepage = ({ toggleCart, cartItems, setCartItems, setToggleCart, data, error }: HomepageProps) => {
+  ;
 
   useEffect(() => {
-    // fetch(`https://api.edamam.com/api/food-database/v2/parser?category=${query}&app_id=${APP_ID}&app_key=${APP_KEY}`)
-    //   .then(response => response.json())
-    //   .then(data => {
-    //     console.log(data.hints)
-    //     const shapedData: FoodItem[] = data.hints.map((item: Hint) => ({
-    //       foodId: item.food.foodId,
-    //       label: item.food.label,
-    //       brand: item.food.brand,
-    //       category: item.food.category,
-    //       image: item.food.image
-    //     }));
-    //     setData(shapedData);
-    //   })
-    //   .catch(error => {
-    //     setError(error);
-    //   });
-  }, []);
+    setToggleCart(false)
+  }, [])
 
   return (
     <div className="home-main">

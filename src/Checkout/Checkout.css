@@ -1,5 +1,5 @@
 h1 {
-    padding: 20px;
+    padding: 20px 20px 0 20px;
     text-align: center;
 }
 
@@ -28,4 +28,13 @@ h1 {
 
 .checkout-image {
     width: 400px;
+}
+
+.checkout-purchase-summary {
+    display: flex;
+    flex-direction: column;
+    max-height: 200px;
+    width: 60%;
+    overflow-y: scroll;
+    margin-bottom: 20px;
 }

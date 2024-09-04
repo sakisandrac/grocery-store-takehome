@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { FoodItem, Hint } from '../types';
 import './Search.css'
 import AddButton from '../AddButton/AddButton';
@@ -9,9 +9,11 @@ interface SearchProps {
     setCartItems: React.Dispatch<React.SetStateAction<FoodItem[]>>;
     cartItems: FoodItem[];
     toggleCart: boolean;
+    setToggleCart: React.Dispatch<React.SetStateAction<boolean>>;
+
 }
 
-const Search = ({ setCartItems, cartItems, toggleCart }: SearchProps) => {
+const Search = ({ setCartItems, cartItems, toggleCart, setToggleCart }: SearchProps) => {
 
 
     const mockData = [
@@ -92,6 +94,10 @@ const Search = ({ setCartItems, cartItems, toggleCart }: SearchProps) => {
         }
     };
 
+    useEffect(() => {
+        setToggleCart(false);
+    }, [])
+
     return (
         <div className="search-main">
             <h1>Search for Food</h1>
@@ -109,11 +115,11 @@ const Search = ({ setCartItems, cartItems, toggleCart }: SearchProps) => {
             {error && <p>{error}</p>}
             {results.length === 0 && <p>No results found, try a different search!</p>}
 
-            <div className="search-main">
+            <div className="search-results">
                 {results.map((item, index) => (
-                    <div key={index} className="search-main">
+                    <div key={index} className="search-results">
+                        {item.image && <img src={item.image} alt={item.label} className="search-item-image" />}
                         <p>{item.label}</p>
-                        {item.image && <img src={item.image} alt={item.label} style={{ width: '100px' }} />}
                         <AddButton addToCart={addToCart} item={item} setCartItems={setCartItems} />
                     </div>
                 ))}
