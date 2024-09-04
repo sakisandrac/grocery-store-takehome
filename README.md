@@ -1,7 +1,7 @@
 <div align="center">
 <h1> Harvest Hub 🍎</h1>
 
-Technologies used FRONTEND:<br>
+Technologies used:<br>
   <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" />
   <img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" />
 </div>
@@ -53,3 +53,4 @@ Technologies used FRONTEND:<br>
 - Run the command: `cd grocery-store-takehome`
 - Run the command: `npm install`
 - Run the command: `npm start`
+- Or view the app [here](grocery-store-takehome.vercel.app)
