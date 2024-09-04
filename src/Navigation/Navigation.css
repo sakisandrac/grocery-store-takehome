@@ -17,13 +17,18 @@
     margin: 10px;
 }
 
+.nav-left {
+    display: flex;
+}
+
 .nav-cart-container {
-display: flex;
-align-items: center;
+    display: flex;
+    align-items: center;
 }
 
 .nav-cart {
-     height: 30px;
+    height: 30px;
+    margin: 10px;
 }
 
 ul {

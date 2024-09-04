@@ -1,0 +1,20 @@
+.cart-main {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 50%;
+    width: 50%;
+    background-color: #F2E8CF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: scroll;
+}
+
+.cart-item {
+    height: 100%;
+}
+
+.cart-item-image {
+    height: 50%;
+}
