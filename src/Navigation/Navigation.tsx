@@ -2,12 +2,10 @@ import React, { useState } from 'react';
 import './Navigation.css';
 import logo from '../resources/logo.png';
 import cartIcon from '../resources/cart.png';
-import { FoodItem } from '../types';
 import { Link, useLocation } from 'react-router-dom';
 
 interface NavigationProps {
     setToggleCart: React.Dispatch<React.SetStateAction<boolean>>;
-
 }
 
 const Navigation = ({ setToggleCart }: NavigationProps) => {
@@ -32,9 +30,7 @@ const Navigation = ({ setToggleCart }: NavigationProps) => {
                     </div>
                 )}
                 <div className="nav-menu-container">
-                    <button className="nav-hamburger" onClick={toggleMenu}>
-                        ☰
-                    </button>
+                    <button className="nav-hamburger" onClick={toggleMenu}>☰</button>
                     <ul className={`nav-links ${isMenuOpen ? 'nav-links-open' : ''}`}>
                         <li><Link className="nav-link" to="/" onClick={toggleMenu}>Home</Link></li>
                         <li><Link className="nav-link" to="/search" onClick={toggleMenu}>Search</Link></li>
