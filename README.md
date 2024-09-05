@@ -60,5 +60,5 @@ Technologies used:<br>
 - Run the command: `cd grocery-store-takehome`
 - Run the command: `npm install`
 - Run the command: `npm start`
-- Or view the app [here](grocery-store-takehome.vercel.app)
+- Or view the app [here](https://grocery-store-takehome-7nv3bmnkq-sakisandracs-projects.vercel.app/)
 - To run tests, use the command: `npm test `
