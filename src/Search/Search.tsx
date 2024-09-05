@@ -5,6 +5,7 @@ import AddButton from '../AddButton/AddButton';
 import { addToCart, API_ID, API_KEY, shapeFoodData } from '../utlities';
 import Cart from '../Cart/Cart';
 import imageUnavailable from '../resources/unavailable.png';
+import searchIcon from '../resources/search.png';
 
 interface SearchProps {
     setCartItems: React.Dispatch<React.SetStateAction<FoodItem[]>>;
@@ -69,6 +70,7 @@ const Search = ({ setCartItems, cartItems, toggleCart, setToggleCart }: SearchPr
                 <button type="submit">Search</button>
             </form>
             {results.length === 0 && searchSubmitted ? <p>{error ? error : 'No results found please try another term'}</p> : <p>Please enter a search term</p>}
+            {results.length === 0 && <img className="search-image" src={searchIcon} alt="search icon and produce" />}
             <div className="search-results">
                 {results.map((item, index) => (
                     <div key={index} className="search-results-item">

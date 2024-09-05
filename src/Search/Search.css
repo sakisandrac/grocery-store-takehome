@@ -7,6 +7,10 @@
     height: 100vh;
 }
 
+.search-image {
+    max-width: 400px;
+}
+
 .search-input {
     height: 20px;
     border-radius: 16px;

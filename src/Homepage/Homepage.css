@@ -56,3 +56,9 @@
     object-fit: contain;
 
 }
+
+@media(max-width: 500px) {
+    .home-items-container {
+        max-height: 400px;
+    }
+}
