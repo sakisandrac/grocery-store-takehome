@@ -8,6 +8,7 @@ h1 {
     align-items: center;
     flex-direction: column;
     padding-bottom: 20px;
+    height: 100vh;
 }
 
 .checkout-text {
@@ -18,6 +19,7 @@ h1 {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 }
 
 .checkout-items-container {
@@ -26,9 +28,19 @@ h1 {
     align-items: center;
 }
 
-.checkout-items {
+.checkout-review-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.checkout-items, .checkout-review-container {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
+}
+
+.checkout-form-container {
+    display: flex;
     justify-content: center;
 }
 
@@ -41,6 +53,7 @@ h1 {
 
 .checkout-item-image {
     width: 200px;
+    object-fit: contain;
 }
 
 .checkout-image {

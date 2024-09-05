@@ -1,0 +1,15 @@
+label, .form-field  {
+    margin: 5px;
+}
+
+.form-main {
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+}
+
+select, .form-input {
+    border-radius: 10px;
+    border-width: 1px;
+    padding: 3px;
+}
