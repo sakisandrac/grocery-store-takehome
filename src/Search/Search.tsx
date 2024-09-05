@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import { FoodItem, Hint } from '../types';
+import { FoodItem } from '../types';
 import './Search.css';
 import AddButton from '../AddButton/AddButton';
-import { addToCart, API_ID, API_KEY } from '../utlities';
+import { addToCart, API_ID, API_KEY, shapeFoodData } from '../utlities';
 import Cart from '../Cart/Cart';
 import imageUnavailable from '../resources/unavailable.png';
 
@@ -43,14 +43,7 @@ const Search = ({ setCartItems, cartItems, toggleCart, setToggleCart }: SearchPr
             }
 
             const data = await response.json();
-            const shapedData: FoodItem[] = data.hints.map((item: Hint) => ({
-                foodId: item.food.foodId,
-                label: item.food.label,
-                brand: item.food.brand,
-                category: item.food.category,
-                image: item.food.image
-            }));
-            setResults(shapedData);
+            setResults(shapeFoodData(data));
             setError('');
             setSearchSubmitted(true);
         } catch (err) {
