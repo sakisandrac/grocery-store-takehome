@@ -6,6 +6,7 @@ import thankYou from '../resources/thank-you.png';
 import Form from '../Form/Form';
 import shipping from '../resources/shipping.png';
 import imageUnavailable from '../resources/unavailable.png';
+import emptyBasket from '../resources/empty.png';
 
 interface CheckoutProps {
     cartItems: FoodItem[]
@@ -51,12 +52,8 @@ const Checkout = ({ cartItems, setCartItems }: CheckoutProps) => {
                     <p className="checkout-text">Items purchased:</p>
                     {purchasedItems.map((item: CartQuantity, index: number) => (
                         <div key={index} className="checkout-purchase-list">
-                            {item.item.image && (
-                                <>
-                                    <p>{item.item.label}</p>
-                                    <p>Quantity: {item.quantity}</p>
-                                </>
-                            )}
+                            <p>{item.item.label}</p>
+                            <p>Quantity: {item.quantity}</p>
                         </div>
                     ))}
                 </div>
@@ -64,7 +61,10 @@ const Checkout = ({ cartItems, setCartItems }: CheckoutProps) => {
             </div>) :
                 <div className="checkout-review">
                     <h1>Review Your Order</h1>
-                    {isCartEmpty ? <p>There are no items in your cart!</p> :
+                    {isCartEmpty ? (<div className="cart-item">
+                        <p>You have not added any items yet</p>
+                        <img src={emptyBasket} alt="empty basket" className="checkout-item-image" />
+                    </div>) :
                         (<div className="checkout-review-container">
                             <div className="checkout-items-container">
                                 <div className="checkout-items">

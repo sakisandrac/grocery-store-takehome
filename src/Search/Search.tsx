@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import { FoodItem } from '../types';
 import './Search.css';
 import AddButton from '../AddButton/AddButton';
@@ -17,6 +17,9 @@ interface SearchProps {
 const Search = ({ setCartItems, cartItems, toggleCart, setToggleCart }: SearchProps) => {
     const [query, setQuery] = useState('');
     const [results, setResults] = useState<FoodItem[]>([]);
+    const [filteredResults, setFilteredResults] = useState<FoodItem[]>([]);
+    const [brands, setBrands] = useState<string[]>([]);
+    const [selectedBrand, setSelectedBrand] = useState<string>('');
     const [error, setError] = useState('');
     const [searchSubmitted, setSearchSubmitted] = useState<boolean>(false);
 
@@ -29,7 +32,7 @@ const Search = ({ setCartItems, cartItems, toggleCart, setToggleCart }: SearchPr
 
         if (!checkInput(query)) {
             setSearchSubmitted(true);
-            setError('Search cannot be blank!')
+            setError('Search cannot be blank!');
             return;
         }
 
@@ -44,11 +47,31 @@ const Search = ({ setCartItems, cartItems, toggleCart, setToggleCart }: SearchPr
             }
 
             const data = await response.json();
-            setResults(shapeFoodData(data));
+            const shapedData = shapeFoodData(data);
+            setResults(shapedData);
+
+            const uniqueBrands = shapedData
+                .map((item) => item.brand)
+                .filter((brand, index, self) => brand && self.indexOf(brand) === index) as string[];
+            setBrands(uniqueBrands);
+
+            setFilteredResults(shapedData);
             setError('');
             setSearchSubmitted(true);
         } catch (err) {
             setError('Failed to fetch data. Please try again.');
+        }
+    };
+
+    const handleBrandChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+        const selected = e.target.value;
+        setSelectedBrand(selected);
+
+        if (selected) {
+            const filtered = results.filter((item) => item.brand === selected);
+            setFilteredResults(filtered);
+        } else {
+            setFilteredResults(results);
         }
     };
 
@@ -69,10 +92,25 @@ const Search = ({ setCartItems, cartItems, toggleCart, setToggleCart }: SearchPr
                 />
                 <button type="submit">Search</button>
             </form>
-            {results.length === 0 && searchSubmitted ? <p>{error ? error : 'No results found please try another term'}</p> : <p>Please enter a search term</p>}
+
+            {results.length > 0 && (
+                <div className="filter-container">
+                    <label htmlFor="brand-filter">Filter by Brand:</label>
+                    <select id="brand-filter" value={selectedBrand} onChange={handleBrandChange}>
+                        <option value="">All Brands</option>
+                        {brands.map((brand, index) => (
+                            <option key={index} value={brand}>
+                                {brand}
+                            </option>
+                        ))}
+                    </select>
+                </div>
+            )}
+            {results.length === 0 && searchSubmitted &&
+                <p>{error ? error : 'No results found please try another term'}</p>}
             {results.length === 0 && <img className="search-image" src={searchIcon} alt="search icon and produce" />}
             <div className="search-results">
-                {results.map((item, index) => (
+                {filteredResults.map((item, index) => (
                     <div key={index} className="search-results-item">
                         <img src={item.image ?? imageUnavailable} alt={item.label} className="search-item-image" />
                         <p>{item.label}</p>
@@ -83,6 +121,6 @@ const Search = ({ setCartItems, cartItems, toggleCart, setToggleCart }: SearchPr
             {toggleCart && <Cart setCartItems={setCartItems} cartItems={cartItems} />}
         </div>
     );
-}
+};
 
-export default Search
+export default Search;

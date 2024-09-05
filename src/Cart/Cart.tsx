@@ -5,10 +5,11 @@ import { useNavigate } from 'react-router-dom';
 import { countItemsInCart, removeFromCart } from '../utlities';
 import closeIcon from '../resources/close-icon.png';
 import imageUnavailable from '../resources/unavailable.png';
+import emptyBasket from '../resources/empty.png';
 
 interface CartProps {
     cartItems: FoodItem[];
-    setCartItems: React.Dispatch<React.SetStateAction<FoodItem[]>>
+    setCartItems: React.Dispatch<React.SetStateAction<FoodItem[]>>;
 }
 
 const Cart = ({ cartItems, setCartItems }: CartProps) => {
@@ -23,7 +24,11 @@ const Cart = ({ cartItems, setCartItems }: CartProps) => {
     return (
         <div className="cart-main">
             <p className="cart-text">Items in your cart:</p>
-            {cartItems.length === 0 && <p>You have not added any items yet</p>}
+            {cartItems.length === 0 &&
+                (<div className="cart-item">
+                    <p>You have not added any items yet</p>
+                    <img src={emptyBasket} alt="empty basket" className="cart-item-image" />
+                </div>)}
             {cartSummary?.map((item: CartQuantity, index: number) => (
                 <div className="cart-item" key={index}>
                     <div className='cart-image-container'>
