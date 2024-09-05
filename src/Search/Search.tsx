@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { FoodItem } from '../types';
 import './Search.css';
 import AddButton from '../AddButton/AddButton';
-import { addToCart, API_ID, API_KEY, shapeFoodData } from '../utlities';
+import { addToCart, API_ID, API_KEY, shapeFoodData, sortedFoodItems } from '../utlities';
 import Cart from '../Cart/Cart';
 import imageUnavailable from '../resources/unavailable.png';
 import searchIcon from '../resources/search.png';
@@ -27,6 +27,14 @@ const Search = ({ setCartItems, cartItems, toggleCart, setToggleCart }: SearchPr
         return query !== '';
     };
 
+
+    const uniqueBrands = (data: FoodItem[]) => {
+        return data
+            .map((item) => item.brand)
+            .filter((brand, index, self) => brand && self.indexOf(brand) === index) as string[];
+    }
+
+
     const handleSearch = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
         e.preventDefault();
 
@@ -48,14 +56,11 @@ const Search = ({ setCartItems, cartItems, toggleCart, setToggleCart }: SearchPr
 
             const data = await response.json();
             const shapedData = shapeFoodData(data);
-            setResults(shapedData);
+            const sortedData = sortedFoodItems(shapedData);
 
-            const uniqueBrands = shapedData
-                .map((item) => item.brand)
-                .filter((brand, index, self) => brand && self.indexOf(brand) === index) as string[];
-            setBrands(uniqueBrands);
-
-            setFilteredResults(shapedData);
+            setResults(sortedData);
+            setBrands(uniqueBrands(sortedData));
+            setFilteredResults(sortedData);
             setError('');
             setSearchSubmitted(true);
         } catch (err) {
@@ -92,7 +97,6 @@ const Search = ({ setCartItems, cartItems, toggleCart, setToggleCart }: SearchPr
                 />
                 <button type="submit">Search</button>
             </form>
-
             {results.length > 0 && (
                 <div className="filter-container">
                     <label htmlFor="brand-filter">Filter by Brand:</label>
@@ -104,8 +108,7 @@ const Search = ({ setCartItems, cartItems, toggleCart, setToggleCart }: SearchPr
                             </option>
                         ))}
                     </select>
-                </div>
-            )}
+                </div>)}
             {results.length === 0 && searchSubmitted &&
                 <p>{error ? error : 'No results found please try another term'}</p>}
             {results.length === 0 && <img className="search-image" src={searchIcon} alt="search icon and produce" />}

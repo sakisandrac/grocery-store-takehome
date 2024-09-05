@@ -37,3 +37,9 @@ export const shapeFoodData = (data: { hints: Hint[] }): FoodItem[] => {
         image: item.food.image,
     }));
 }
+
+export const sortedFoodItems = (foodItems: FoodItem[]) => {
+    return foodItems.sort((a, b) =>
+        a.label.toLowerCase().localeCompare(b.label.toLowerCase())
+    );
+}
