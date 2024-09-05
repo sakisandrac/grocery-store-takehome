@@ -40,7 +40,7 @@ const Search = ({ setCartItems, cartItems, toggleCart, setToggleCart }: SearchPr
         }
 
         try {
-            const data = await getData(query, API_URL);
+            const data = await getData(query, API_URL, true);
             const shapedData = shapeFoodData(data);
             const sortedData = sortedFoodItems(shapedData);
 

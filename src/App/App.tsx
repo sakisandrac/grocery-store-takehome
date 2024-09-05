@@ -19,13 +19,11 @@ const App = () => {
   const API_URL = `https://api.edamam.com/api/food-database/v2/parser?category=${query}&app_id=${API_ID}&app_key=${API_KEY}`;
 
   useEffect(() => {
-    if (data.length === 0) {
       getData(query, API_URL).then((data) => {
         setData(shapeFoodData(data));
       }).catch((err) => {
         setError(err);
       });
-    };
   }, []);
 
   return (
