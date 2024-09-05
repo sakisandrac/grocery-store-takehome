@@ -5,6 +5,7 @@ import { countItemsInCart } from '../utlities';
 import thankYou from '../resources/thank-you.png';
 import Form from '../Form/Form';
 import shipping from '../resources/shipping.png';
+import imageUnavailable from '../resources/unavailable.png';
 
 interface CheckoutProps {
     cartItems: FoodItem[]
@@ -69,13 +70,9 @@ const Checkout = ({ cartItems, setCartItems }: CheckoutProps) => {
                                 <div className="checkout-items">
                                     {cartSummary?.map((item: CartQuantity, index: number) => (
                                         <div key={index} className="checkout-item">
-                                            {item.item.image && (
-                                                <>
-                                                    <img src={item.item.image} alt={item.item.label} className="checkout-item-image" />
-                                                    <p>{item.item.label}</p>
-                                                    <p>Quantity: {item.quantity}</p>
-                                                </>
-                                            )}
+                                            <img src={item.item.image ?? imageUnavailable} alt={item.item.label} className="checkout-item-image" />
+                                            <p>{item.item.label}</p>
+                                            <p>Quantity: {item.quantity}</p>
                                         </div>
                                     ))}
                                 </div>
