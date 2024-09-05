@@ -40,17 +40,15 @@ const App = () => {
   }, []);
 
   return (
-    <>
-      <div className="App">
-        <Navigation setToggleCart={setToggleCart} />
-      </div>
+    <div className="app">
+      <Navigation setToggleCart={setToggleCart} />
       <Routes>
         <Route path="/" element={<Homepage data={data} error={error} toggleCart={toggleCart} cartItems={cartItems} setCartItems={setCartItems} setToggleCart={setToggleCart} />} />
         <Route path="/checkout" element={<Checkout cartItems={cartItems} setCartItems={setCartItems} />} />
         <Route path="/search" element={<Search setCartItems={setCartItems} cartItems={cartItems} toggleCart={toggleCart} setToggleCart={setToggleCart} />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
-    </>
+    </div>
   );
 }
 

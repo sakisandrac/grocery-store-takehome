@@ -1,3 +1,15 @@
+.app {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+    overflow-x: hidden;
+}
+
+body {
+ margin: 0;
+} 
+
 button {
     cursor: pointer;
     background-color: #A7C957;

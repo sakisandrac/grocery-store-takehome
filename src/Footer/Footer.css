@@ -1,0 +1,24 @@
+footer {
+    width: 100%;
+    background-color: #f2e8cf;
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    bottom: 0;
+}
+
+.footer-link-container {
+    margin: 0 20px;
+}
+
+.footer-header {
+    font-style: italic;
+    font-weight: 600;
+}
+
+@media(max-width: 500px) {
+    .footer-link-container {
+        display: none;
+    }
+}
