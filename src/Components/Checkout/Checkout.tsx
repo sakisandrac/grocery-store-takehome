@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { CartQuantity, FoodItem, FormData } from '../../utilities/types';
 import './Checkout.css';
-import { countItemsInCart } from '../../utilities/utilities';
+import { countItemsInCart } from '../../utilities/helpers';
 import thankYou from '../../resources/thank-you.png';
 import Form from '../Form/Form';
 import shipping from '../../resources/shipping.png';

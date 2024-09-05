@@ -1,8 +1,5 @@
 import { CartQuantity, FoodItem, Hint } from "./types";
 
-export const API_ID = process.env.REACT_APP_API_ID;
-export const API_KEY = process.env.REACT_APP_API_KEY;
-
 export const countItemsInCart = (cartItems: FoodItem[]) => {
     return Object.values(
         cartItems.reduce<{ [foodId: string]: { item: FoodItem; quantity: number } }>(
@@ -48,30 +45,4 @@ export const uniqueBrands = (data: FoodItem[]) => {
     return data
         .map((item) => item.brand)
         .filter((brand, index, self) => brand && self.indexOf(brand) === index) as string[];
-}
-
-export const getData = async (query: string | string[], API_URL: string, isSearch?: boolean) => {
-    if (!isSearch) {
-        const cachedData = sessionStorage.getItem(query[0]);
-        if (cachedData) {
-            return JSON.parse(cachedData);
-        }
-    }
-
-    try {
-        const response = await fetch(API_URL);
-
-        if (!response.ok) {
-            throw new Error('Network error');
-        }
-
-        const data = await response.json();
-
-        if (!isSearch) {
-            sessionStorage.setItem(query[0], JSON.stringify(data));
-        }
-        return data;
-    } catch (err) {
-        return 'Failed to fetch data. Please try again.'
-    }
 }

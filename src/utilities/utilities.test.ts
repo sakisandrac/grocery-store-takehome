@@ -1,5 +1,5 @@
 import { FoodItem } from './types';
-import { countItemsInCart, shapeFoodData } from './utilities';
+import { countItemsInCart, shapeFoodData } from './helpers';
 
 describe('shapeFoodData', () => {
     it('should shape data correctly when provided with valid data', () => {

@@ -2,7 +2,7 @@ import React from 'react';
 import './Cart.css';
 import { CartQuantity, FoodItem } from '../../utilities/types';
 import { useNavigate } from 'react-router-dom';
-import { countItemsInCart, removeFromCart } from '../../utilities/utilities';
+import { countItemsInCart, removeFromCart } from '../../utilities/helpers';
 import closeIcon from '../../resources/close-icon.png';
 import imageUnavailable from '../../resources/unavailable.png';
 import emptyBasket from '../../resources/empty.png';

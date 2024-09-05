@@ -4,7 +4,7 @@ import logo from '../../resources/logo.png';
 import cartIcon from '../../resources/cart.png';
 import { Link, useLocation } from 'react-router-dom';
 import { FoodItem } from '../../utilities/types';
-import { countItemsInCart } from '../../utilities/utilities';
+import { countItemsInCart } from '../../utilities/helpers';
 
 interface NavigationProps {
     setToggleCart: React.Dispatch<React.SetStateAction<boolean>>;
