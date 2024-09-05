@@ -13,6 +13,7 @@ Technologies used:<br>
 - See grocery items upon visiting homepage
 - Navigation bar
 - Search through foods from API
+  - Filter results by brand
 - Add / Remove items in cart
 - Checkout items after finishing adding to cart
 - Summary of items after purchasing
