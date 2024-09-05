@@ -43,3 +43,23 @@ export const sortedFoodItems = (foodItems: FoodItem[]) => {
         a.label.toLowerCase().localeCompare(b.label.toLowerCase())
     );
 }
+
+export const uniqueBrands = (data: FoodItem[]) => {
+    return data
+        .map((item) => item.brand)
+        .filter((brand, index, self) => brand && self.indexOf(brand) === index) as string[];
+}
+
+export const getData = async (query: string | string[], API_URL: string) => {
+    try {
+        const response = await fetch(API_URL);
+
+        if (!response.ok) {
+            throw new Error('Network error');
+        }
+
+        return await response.json();
+    } catch (err) {
+        return 'Failed to fetch data. Please try again.'
+    }
+}

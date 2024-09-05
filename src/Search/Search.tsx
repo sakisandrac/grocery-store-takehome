@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { FoodItem } from '../types';
 import './Search.css';
 import AddButton from '../AddButton/AddButton';
-import { addToCart, API_ID, API_KEY, shapeFoodData, sortedFoodItems } from '../utlities';
+import { addToCart, API_ID, API_KEY, getData, shapeFoodData, sortedFoodItems, uniqueBrands } from '../utlities';
 import Cart from '../Cart/Cart';
 import imageUnavailable from '../resources/unavailable.png';
 import searchIcon from '../resources/search.png';
@@ -22,39 +22,25 @@ const Search = ({ setCartItems, cartItems, toggleCart, setToggleCart }: SearchPr
     const [selectedBrand, setSelectedBrand] = useState<string>('');
     const [error, setError] = useState('');
     const [searchSubmitted, setSearchSubmitted] = useState<boolean>(false);
+    const API_URL = `https://api.edamam.com/api/food-database/v2/parser?ingr=${query}&app_id=${API_ID}&app_key=${API_KEY}`;
 
-    const checkInput = (query: string) => {
-        return query !== '';
+    const checkInput = (query: string): boolean => {
+        if (query === '') {
+            setSearchSubmitted(true);
+            setError('Search cannot be blank!');
+            return false;
+        }
+        return true;
     };
-
-
-    const uniqueBrands = (data: FoodItem[]) => {
-        return data
-            .map((item) => item.brand)
-            .filter((brand, index, self) => brand && self.indexOf(brand) === index) as string[];
-    }
-
 
     const handleSearch = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
         e.preventDefault();
-
         if (!checkInput(query)) {
-            setSearchSubmitted(true);
-            setError('Search cannot be blank!');
             return;
         }
 
-        const API_URL = `https://api.edamam.com/api/food-database/v2/parser?ingr=${query}&app_id=${API_ID}&app_key=${API_KEY}`;
-
         try {
-            const response = await fetch(API_URL);
-
-            if (!response.ok) {
-                setError('Network error');
-                throw new Error('Network error');
-            }
-
-            const data = await response.json();
+            const data = await getData(query, API_URL);
             const shapedData = shapeFoodData(data);
             const sortedData = sortedFoodItems(shapedData);
 
@@ -63,8 +49,8 @@ const Search = ({ setCartItems, cartItems, toggleCart, setToggleCart }: SearchPr
             setFilteredResults(sortedData);
             setError('');
             setSearchSubmitted(true);
-        } catch (err) {
-            setError('Failed to fetch data. Please try again.');
+        } catch (error) {
+            setError('Failed to fetch data. Please try again.')
         }
     };
 

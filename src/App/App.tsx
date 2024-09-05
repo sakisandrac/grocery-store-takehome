@@ -7,7 +7,7 @@ import { Route, Routes } from 'react-router-dom';
 import Checkout from '../Checkout/Checkout';
 import Search from '../Search/Search';
 import ErrorPage from '../ErrorPage/ErrorPage';
-import { API_ID, API_KEY, shapeFoodData } from '../utlities';
+import { API_ID, API_KEY, getData, shapeFoodData } from '../utlities';
 
 const App = () => {
   const [data, setData] = useState<FoodItem[]>([]);
@@ -16,27 +16,16 @@ const App = () => {
   const [error, setError] = useState('');
 
   const query = ['generic-foods'];
-
-  const fetchFoodData = async (query: string[]) => {
-    try {
-      const response = await fetch(`https://api.edamam.com/api/food-database/v2/parser?category=${query}&app_id=${API_ID}&app_key=${API_KEY}`);
-
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-
-      const data = await response.json();
-
-      setData(shapeFoodData(data));
-    } catch (error) {
-      setError('Failed to fetch data');
-    }
-  };
+  const API_URL = `https://api.edamam.com/api/food-database/v2/parser?category=${query}&app_id=${API_ID}&app_key=${API_KEY}`;
 
   useEffect(() => {
     if (data.length === 0) {
-      fetchFoodData(query);
-    }
+      getData(query, API_URL).then((data) => {
+        setData(shapeFoodData(data));
+      }).catch((err) => {
+        setError(err);
+      });
+    };
   }, []);
 
   return (
