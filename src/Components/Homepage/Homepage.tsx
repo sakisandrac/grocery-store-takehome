@@ -4,9 +4,11 @@ import groceryHero from '../../resources/groceries-hero.png';
 import AddButton from '../AddButton/AddButton';
 import Cart from '../Cart/Cart';
 import { FoodItem } from '../../utilities/types';
-import { addToCart } from '../../utilities/helpers';
+import { addToCart, shapeFoodData } from '../../utilities/helpers';
 import imageUnavailable from '../../resources/unavailable.png';
 import Footer from '../Footer/Footer';
+import { getData } from '../../utilities/apiCalls';
+import { API_ID, API_KEY } from '../../utilities/constants';
 
 interface HomepageProps {
   toggleCart: boolean;
@@ -15,19 +17,27 @@ interface HomepageProps {
   setToggleCart: React.Dispatch<React.SetStateAction<boolean>>;
   data: FoodItem[]
   error: string;
-
+  setData: React.Dispatch<React.SetStateAction<FoodItem[]>>
+  setError: React.Dispatch<React.SetStateAction<string>>
 }
 
 
-const Homepage = ({ toggleCart, cartItems, setCartItems, setToggleCart, data, error }: HomepageProps) => {
+const Homepage = ({ toggleCart, cartItems, setCartItems, setToggleCart, data, error, setData, setError }: HomepageProps) => {
+  const query = ['generic-foods'];
+  const API_URL = `https://api.edamam.com/api/food-database/v2/parser?category=${query}&app_id=${API_ID}&app_key=${API_KEY}`;
 
   useEffect(() => {
+    getData(query, API_URL).then((data) => {
+      setData(shapeFoodData(data));
+    }).catch((err) => {
+      setError(err);
+    });
     setToggleCart(false)
-  }, [])
+  }, []);
 
   return (
     <div className="home-main">
-      <div style={{ height: '100vh' }}>
+      <div className="home-section-container">
         <section>
           <img src={groceryHero} alt="banner of food" className="home-hero-image" />
         </section>

@@ -7,7 +7,8 @@ import imageUnavailable from '../../resources/unavailable.png';
 import searchIcon from '../../resources/search.png';
 import { getData } from '../../utilities/apiCalls';
 import { addToCart, shapeFoodData, sortedFoodItems, uniqueBrands } from '../../utilities/helpers';
-import { API_ID, API_KEY } from '../../utilities/contants';
+import { API_ID, API_KEY } from '../../utilities/constants';
+import { useSearchParams } from 'react-router-dom';
 
 interface SearchProps {
     setCartItems: React.Dispatch<React.SetStateAction<FoodItem[]>>;
@@ -24,7 +25,19 @@ const Search = ({ setCartItems, cartItems, toggleCart, setToggleCart }: SearchPr
     const [selectedBrand, setSelectedBrand] = useState<string>('');
     const [error, setError] = useState('');
     const [searchSubmitted, setSearchSubmitted] = useState<boolean>(false);
-    const API_URL = `https://api.edamam.com/api/food-database/v2/parser?ingr=${query}&app_id=${API_ID}&app_key=${API_KEY}`;
+    const [searchParams, setSearchParams] = useSearchParams();
+
+    useEffect(() => {
+        const queryParam = searchParams.get('query');
+        if (queryParam) {
+            setQuery(queryParam);
+            handleSearch(queryParam);
+        }
+    }, [searchParams]);
+
+    useEffect(() => {
+        setToggleCart(false);
+    }, []);
 
     const checkInput = (query: string): boolean => {
         if (query === '') {
@@ -35,14 +48,17 @@ const Search = ({ setCartItems, cartItems, toggleCart, setToggleCart }: SearchPr
         return true;
     };
 
-    const handleSearch = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
-        e.preventDefault();
-        if (!checkInput(query)) {
+    const handleSearch = async (queryParam: string, e?: React.FormEvent<HTMLFormElement>): Promise<void> => {
+        e?.preventDefault();
+        const searchTerm = (queryParam ?? query)
+
+        if (!checkInput(searchTerm)) {
             return;
         }
-
+        const API_URL = `https://api.edamam.com/api/food-database/v2/parser?ingr=${searchTerm}&app_id=${API_ID}&app_key=${API_KEY}`;
+       
         try {
-            const data = await getData(query, API_URL, true);
+            const data = await getData(searchTerm, API_URL, true);
             const shapedData = shapeFoodData(data);
             const sortedData = sortedFoodItems(shapedData);
 
@@ -54,6 +70,17 @@ const Search = ({ setCartItems, cartItems, toggleCart, setToggleCart }: SearchPr
         } catch (error) {
             setError('Failed to fetch data. Please try again.')
         }
+    };
+
+
+    const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        if (!checkInput(query)) {
+            return;
+        }
+
+        setSearchParams({ query });
+        handleSearch('', e);
     };
 
     const handleBrandChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -68,14 +95,10 @@ const Search = ({ setCartItems, cartItems, toggleCart, setToggleCart }: SearchPr
         }
     };
 
-    useEffect(() => {
-        setToggleCart(false);
-    }, []);
-
     return (
         <div className="search-main">
             <h1>Search for Food</h1>
-            <form onSubmit={handleSearch}>
+            <form onSubmit={handleFormSubmit}>
                 <input
                     type="text"
                     value={query}

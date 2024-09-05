@@ -15,9 +15,10 @@ export const getData = async (query: string | string[], API_URL: string, isSearc
 
         const data = await response.json();
 
-        if (!isSearch) {
+        if (!isSearch) { 
             sessionStorage.setItem(query[0], JSON.stringify(data));
         }
+
         return data;
     } catch (err) {
         return 'Failed to fetch data. Please try again.'
