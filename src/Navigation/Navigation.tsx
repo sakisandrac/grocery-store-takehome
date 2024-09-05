@@ -3,30 +3,34 @@ import './Navigation.css';
 import logo from '../resources/logo.png';
 import cartIcon from '../resources/cart.png';
 import { Link, useLocation } from 'react-router-dom';
+import { FoodItem } from '../types';
+import { countItemsInCart } from '../utlities';
 
 interface NavigationProps {
     setToggleCart: React.Dispatch<React.SetStateAction<boolean>>;
+    cartItems: FoodItem[];
 }
 
-const Navigation = ({ setToggleCart }: NavigationProps) => {
+const Navigation = ({ setToggleCart, cartItems }: NavigationProps) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const location = useLocation();
     const currentPath = location.pathname;
 
     const toggleMenu = () => setIsMenuOpen(prev => !prev);
+    const cartTotal = countItemsInCart(cartItems).reduce((acc, item) => acc + item.quantity, 0);
 
     return (
         <nav className="nav-main">
             <Link className="nav-logo" to="/"><img src={logo} alt="harvest hub logo" className="nav-logo" /></Link>
             <div className="nav-left">
                 {currentPath !== '/checkout' && (
-                    <div className="nav-cart-container">
+                    <div className="nav-cart-container" onClick={() => setToggleCart(prev => !prev)}>
                         <img
-                            onClick={() => setToggleCart(prev => !prev)}
                             className="nav-cart"
                             src={cartIcon}
                             alt="cart icon"
                         />
+                        <span className="nav-cart-count">{cartTotal}</span>
                     </div>
                 )}
                 <div className="nav-menu-container">

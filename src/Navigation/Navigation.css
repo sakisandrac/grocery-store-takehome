@@ -37,6 +37,10 @@ ul {
     cursor: pointer;
 }
 
+.nav-cart-count {
+    color: #FFFFFF;
+}
+
 .nav-cart {
     height: 30px;
     margin: 10px;

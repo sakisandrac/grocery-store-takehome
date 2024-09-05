@@ -41,7 +41,7 @@ const App = () => {
 
   return (
     <div className="app">
-      <Navigation setToggleCart={setToggleCart} />
+      <Navigation setToggleCart={setToggleCart} cartItems={cartItems} />
       <Routes>
         <Route path="/" element={<Homepage data={data} error={error} toggleCart={toggleCart} cartItems={cartItems} setCartItems={setCartItems} setToggleCart={setToggleCart} />} />
         <Route path="/checkout" element={<Checkout cartItems={cartItems} setCartItems={setCartItems} />} />
