@@ -63,7 +63,7 @@ const Checkout = ({ cartItems, setCartItems }: CheckoutProps) => {
                     <h1>Review Your Order</h1>
                     {isCartEmpty ? (<div className="cart-item">
                         <p>You have not added any items yet</p>
-                        <img src={emptyBasket} alt="empty basket" className="checkout-item-image" />
+                        <img src={emptyBasket} alt="empty basket" className="search-image" />
                     </div>) :
                         (<div className="checkout-review-container">
                             <div className="checkout-items-container">
