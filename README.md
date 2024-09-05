@@ -61,3 +61,4 @@ Technologies used:<br>
 - Run the command: `npm install`
 - Run the command: `npm start`
 - Or view the app [here](grocery-store-takehome.vercel.app)
+- To run tests, use the command: `npm test `
