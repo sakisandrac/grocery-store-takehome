@@ -35,14 +35,18 @@ Technologies used:<br>
   <img width="290" alt="Screenshot 2023-11-26 at 3 22 10 PM" src="https://github.com/user-attachments/assets/40db1bda-b055-42b5-8ee0-217ce9795836" style="display: inline-block;">
 </div>
 
-  <h2>Search for food</h2>
+  <h2>Search for food and filter by brand</h2>
     <div style="display: inline-block;">
-        <img width="290" alt="Screenshot 2023-11-26 at 3 22 10 PM" src="https://github.com/user-attachments/assets/a4bb18a2-bce7-40b1-b0da-a63c13a8de3c" style="display: inline-block;">
+        <img width="290" alt="Screenshot 2023-11-26 at 3 22 10 PM" src="https://github.com/user-attachments/assets/d8681394-7b03-4751-925b-9c5331117ce4" style="display: inline-block;">
+</div>
+
+<h2>Shipping form and cart review</h2>
+    <div style="display: inline-block;">
+        <img width="290" alt="Screenshot 2023-11-26 at 3 22 10 PM" src="https://github.com/user-attachments/assets/d66aebf5-4f8b-4af6-afd0-60bdf00a2b13" style="display: inline-block;">
 </div>
 
   <h2>Purchase successful</h2>
     <div style="display: inline-block;">
-        <img width="290" alt="Screenshot 2023-11-26 at 3 22 10 PM" src="https://github.com/user-attachments/assets/2760b959-5588-4bd5-ac15-d03fce610c51" style="display: inline-block;">
     <img width="290" alt="Screenshot 2023-11-27 at 7 01 26 PM" src="https://github.com/user-attachments/assets/8116b7c6-a808-4f8a-97d2-2327616317be" alt="Image 1" style="display: inline-block;">
 </div>
  </div>
