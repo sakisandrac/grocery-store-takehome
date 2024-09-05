@@ -1,5 +1,5 @@
 import React from 'react';
-import { FoodItem } from '../types';
+import { FoodItem } from '../../utilities/types';
 
 interface AddButtonProps {
     addToCart: (item: FoodItem, setCartItems: React.Dispatch<React.SetStateAction<FoodItem[]>>, setToggleCart: React.Dispatch<React.SetStateAction<boolean>>) => void;

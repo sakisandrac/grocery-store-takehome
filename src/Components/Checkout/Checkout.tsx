@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { CartQuantity, FoodItem, FormData } from '../types';
+import { CartQuantity, FoodItem, FormData } from '../../utilities/types';
 import './Checkout.css';
-import { countItemsInCart } from '../utlities';
-import thankYou from '../resources/thank-you.png';
+import { countItemsInCart } from '../../utilities/utilities';
+import thankYou from '../../resources/thank-you.png';
 import Form from '../Form/Form';
-import shipping from '../resources/shipping.png';
-import imageUnavailable from '../resources/unavailable.png';
-import emptyBasket from '../resources/empty.png';
+import shipping from '../../resources/shipping.png';
+import imageUnavailable from '../../resources/unavailable.png';
+import emptyBasket from '../../resources/empty.png';
 
 interface CheckoutProps {
     cartItems: FoodItem[]

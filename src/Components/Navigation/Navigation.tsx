@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import './Navigation.css';
-import logo from '../resources/logo.png';
-import cartIcon from '../resources/cart.png';
+import logo from '../../resources/logo.png';
+import cartIcon from '../../resources/cart.png';
 import { Link, useLocation } from 'react-router-dom';
-import { FoodItem } from '../types';
-import { countItemsInCart } from '../utlities';
+import { FoodItem } from '../../utilities/types';
+import { countItemsInCart } from '../../utilities/utilities';
 
 interface NavigationProps {
     setToggleCart: React.Dispatch<React.SetStateAction<boolean>>;

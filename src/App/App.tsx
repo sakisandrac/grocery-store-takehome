@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
-import Homepage from '../Homepage/Homepage';
-import Navigation from '../Navigation/Navigation';
-import { FoodItem } from '../types';
+import Homepage from '../Components/Homepage/Homepage';
+import Navigation from '../Components/Navigation/Navigation';
+import { FoodItem } from '../utilities/types';
 import { Route, Routes } from 'react-router-dom';
-import Checkout from '../Checkout/Checkout';
-import Search from '../Search/Search';
-import ErrorPage from '../ErrorPage/ErrorPage';
-import { API_ID, API_KEY, getData, shapeFoodData } from '../utlities';
+import Checkout from '../Components/Checkout/Checkout';
+import Search from '../Components/Search/Search';
+import ErrorPage from '../Components/ErrorPage/ErrorPage';
+import { API_ID, API_KEY, getData, shapeFoodData } from '../utilities/utilities';
 
 const App = () => {
   const [data, setData] = useState<FoodItem[]>([]);

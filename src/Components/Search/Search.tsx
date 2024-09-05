@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { FoodItem } from '../types';
+import { FoodItem } from '../../utilities/types';
 import './Search.css';
 import AddButton from '../AddButton/AddButton';
-import { addToCart, API_ID, API_KEY, getData, shapeFoodData, sortedFoodItems, uniqueBrands } from '../utlities';
+import { addToCart, API_ID, API_KEY, getData, shapeFoodData, sortedFoodItems, uniqueBrands } from '../../utilities/utilities';
 import Cart from '../Cart/Cart';
-import imageUnavailable from '../resources/unavailable.png';
-import searchIcon from '../resources/search.png';
+import imageUnavailable from '../../resources/unavailable.png';
+import searchIcon from '../../resources/search.png';
 
 interface SearchProps {
     setCartItems: React.Dispatch<React.SetStateAction<FoodItem[]>>;

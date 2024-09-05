@@ -1,11 +1,11 @@
 import React from 'react';
 import './Cart.css';
-import { CartQuantity, FoodItem } from '../types';
+import { CartQuantity, FoodItem } from '../../utilities/types';
 import { useNavigate } from 'react-router-dom';
-import { countItemsInCart, removeFromCart } from '../utlities';
-import closeIcon from '../resources/close-icon.png';
-import imageUnavailable from '../resources/unavailable.png';
-import emptyBasket from '../resources/empty.png';
+import { countItemsInCart, removeFromCart } from '../../utilities/utilities';
+import closeIcon from '../../resources/close-icon.png';
+import imageUnavailable from '../../resources/unavailable.png';
+import emptyBasket from '../../resources/empty.png';
 
 interface CartProps {
     cartItems: FoodItem[];

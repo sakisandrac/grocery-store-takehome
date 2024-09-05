@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
 import './Homepage.css';
-import groceryHero from '../resources/groceries-hero.png';
+import groceryHero from '../../resources/groceries-hero.png';
 import AddButton from '../AddButton/AddButton';
 import Cart from '../Cart/Cart';
-import { FoodItem } from '../types';
-import { addToCart } from '../utlities';
-import imageUnavailable from '../resources/unavailable.png';
+import { FoodItem } from '../../utilities/types';
+import { addToCart } from '../../utilities/utilities';
+import imageUnavailable from '../../resources/unavailable.png';
 import Footer from '../Footer/Footer';
 
 interface HomepageProps {
