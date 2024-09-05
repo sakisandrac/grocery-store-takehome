@@ -14,3 +14,12 @@ export interface CartQuantity {
   item: FoodItem;
   quantity: number;
 }
+
+export interface FormData {
+  name: string;
+  email: string;
+  streetAddress: string;
+  city: string;
+  state: string;
+  paymentMethod?: string;
+}

@@ -4,6 +4,7 @@
     align-items: center;
     position: relative;
     padding-bottom: 20px;
+    height: 100vh;
 }
 
 .search-input {
